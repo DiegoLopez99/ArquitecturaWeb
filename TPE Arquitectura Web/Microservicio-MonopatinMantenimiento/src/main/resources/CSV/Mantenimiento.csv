@@ -1,0 +1,4 @@
+id,inicio,finalizacion,motivo,id_monopatin,reparado
+1,2016-01-13,2017-01-13,prueba,1,true
+2,2018-01-13,2019-01-13,error,2,false
+3,2020-01-13,2021-01-13,rotura,3,true

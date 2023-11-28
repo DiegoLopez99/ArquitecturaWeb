@@ -1,0 +1,324 @@
+openapi: 3.0.1
+info:
+  title: API Monopatines Electricos
+  description: Esta API se encarga del manego de un sistema de monopatines electricos
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+tags:
+- name: Administradores
+  description: este endpoint maneja la informacion de los administradores de la app
+- name: Tarifas
+  description: maneja la informacion de las tarifas
+- name: Monpatines
+  description: maneja la informacion de los monopatines
+- name: Mantenimientos
+  description: maneja la informacion de los mantenimientos
+- name: Paradas
+  description: maneja la informacion de las paradas
+- name: Cuentas
+  description: maneja la informacion de las cuentas
+- name: Usuarios
+  description: maneja la informacion de los usuarios
+- name: Viajes
+  description: maneja la informacion de los viajes
+- name: Pausas
+  description: maneja la informacion de las pausas
+- name: Security
+  description: maneja la auntentificacion
+
+
+paths:
+  /at/administradores/:
+    get:
+      tags:
+      - Administradores
+      summary: obtiene todos los usuarios que hay en la base de datos administradores 
+      responses: 
+        200: 
+          description: (ok) la peticion fue exitosa
+          content: 
+            aplication/json: 
+              schema:
+                $ref: '#/components/schemas/Administrador'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /at/administradores/agregar:
+    post:
+      tags:
+      - Administradores
+      summary: agrega otro usuario
+      requestBody: 
+        content:
+          aplication/json:
+            schema:
+              $ref: '#/components/schemas/Administrador'
+              
+      responses: 
+        200: 
+          description: (ok) la peticion fue exitosa
+          content: 
+            aplication/json: 
+              schema:
+                $ref: '#/components/schemas/Administrador'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+          
+  /at/tarifas/:
+    get:
+      tags:
+      - Tarifas
+      summary: obtiene las tarifas
+      responses: 
+        200: 
+          description: (ok) la peticion fue exitosa
+          content: 
+            aplication/json: 
+              schema:
+                $ref: '#/components/schemas/Tarifa'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /at/tarifas/id/{id}:
+    get:
+      tags:
+      - Tarifas
+      summary: obtiene la tarifas dado un id
+      parameters:
+      - name: id
+        in: path  
+        required: true
+        schema:
+          type: string
+      responses: 
+        200: 
+          description: (ok) la peticion fue exitosa
+          content: 
+            aplication/json: 
+              schema:
+                $ref: '#/components/schemas/Tarifa'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /at/tarifas/agregar:
+     post:
+      tags:
+      - Tarifas
+      summary: agrega otra tarifa
+      requestBody: 
+        content:
+          aplication/json:
+            schema:
+              $ref: '#/components/schemas/Tarifa'
+              
+      responses: 
+        200: 
+          description: (ok) la peticion fue exitosa
+          content: 
+            aplication/json: 
+              schema:
+                $ref: '#/components/schemas/Administrador'
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /mm/monopatines:
+    get:
+      tags:
+      - Monpatines
+      summary: obtiene los monopatines
+              
+      responses: 
+        200: 
+          description: (ok) la peticion fue exitosa
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /mm/mantenimientos:
+    get:
+        tags:
+        - Mantenimientos
+        summary: obtiene los mantenimientos
+                
+        responses: 
+          200: 
+            description: (ok) la peticion fue exitosa
+          400: 
+            $ref: '#/components/responses/BadRequest'
+          401:
+            $ref: '#/components/responses/Unauthorized'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/ServerError'
+  /p/paradas:
+    get:
+        tags:
+        - Paradas
+        summary: obtiene las paradas
+        responses: 
+          200: 
+            description: (ok) la peticion fue exitosa
+          400: 
+            $ref: '#/components/responses/BadRequest'
+          401:
+            $ref: '#/components/responses/Unauthorized'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/ServerError'
+  /uc/cuentas/:
+    get:
+        tags:
+        - Cuentas
+        summary: obtiene las cuentas
+        responses: 
+          200: 
+            description: (ok) la peticion fue exitosa
+          400: 
+            $ref: '#/components/responses/BadRequest'
+          401:
+            $ref: '#/components/responses/Unauthorized'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/ServerError'
+  /uc/usuarios/:
+    get:
+        tags:
+        - Usuarios
+        summary: obtiene los usuarios
+        responses: 
+          200: 
+            description: (ok) la peticion fue exitosa
+          400: 
+            $ref: '#/components/responses/BadRequest'
+          401:
+            $ref: '#/components/responses/Unauthorized'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/ServerError'
+  /vp/viajes/:
+    get:
+        tags:
+        - Viajes
+        summary: obtiene los viajes
+        responses: 
+          200: 
+            description: (ok) la peticion fue exitosa
+          400: 
+            $ref: '#/components/responses/BadRequest'
+          401:
+            $ref: '#/components/responses/Unauthorized'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/ServerError'
+  /vp/pausas/:
+    get:
+        tags:
+        - Pausas
+        summary: obtiene las pausas
+        responses: 
+          200: 
+            description: (ok) la peticion fue exitosa
+          400: 
+            $ref: '#/components/responses/BadRequest'
+          401:
+            $ref: '#/components/responses/Unauthorized'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/ServerError'
+  /api/authenticate:
+    post:
+      tags:
+      - Security
+      summary: auntentifica un usuario
+      responses: 
+        200: 
+          description: (ok) la peticion fue exitosa
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /api/register:
+    post:
+      tags:
+      - Security
+      summary: registra un usuario
+      responses: 
+        200: 
+          description: (ok) la peticion fue exitosa
+        400: 
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+components: 
+  responses: 
+    Unauthorized:
+      description: (Unauthorized) no tienes autorizacion 
+    NotFound:
+      description: (NotFound) elemento no encontrado
+    BadRequest:
+      description: (BadRequest) datos invalidos
+    ServerError:
+      description: (ServerError) error en el servidor
+      
+  schemas:
+    Administrador:
+      type: object
+      properties:
+        nombre_usuario:
+          type: string
+        contraseña:
+          type: string
+    Tarifa:
+      type: object
+      properties:
+        fecha_inicio:
+          type: string
+        tarifa_normal:
+          type: number
+        tarifa_extra:
+          type: number
